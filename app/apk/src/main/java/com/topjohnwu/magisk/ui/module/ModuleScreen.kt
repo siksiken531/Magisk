@@ -68,12 +68,13 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import com.topjohnwu.magisk.MainActivity
 import com.topjohnwu.magisk.R
 import com.topjohnwu.magisk.core.Info
 import com.topjohnwu.magisk.core.di.ServiceLocator
 import com.topjohnwu.magisk.core.download.DownloadEngine
+import com.topjohnwu.magisk.core.download.OnlineModuleSubject
 import com.topjohnwu.magisk.core.model.module.OnlineModule
-import com.topjohnwu.magisk.ui.MainActivity
 import com.topjohnwu.magisk.ui.component.ConfirmResult
 import com.topjohnwu.magisk.ui.component.MagiskDialog
 import com.topjohnwu.magisk.ui.component.MarkdownTextAsync
@@ -463,7 +464,4 @@ private fun OnlineModuleDialog(
     ) {
         MarkdownTextAsync {
             val str = svc.fetchString(item.changelog)
-            if (str.length > 1000) str.substring(0, 1000) else str
-        }
-    }
-}
+            if (str.length > 1000) str.substring(0, 10
