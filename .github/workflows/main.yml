@@ -1,4 +1,4 @@
-name: Build Magisk Nova
+name: Build Magisk
 
 on:
   push:
@@ -26,15 +26,23 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
-      - name: Build Magisk Binaries and APK
+      - name: Build Magisk NDK and Binaries
         run: |
-          ./build.py all
+          export ANDROID_HOME=$ANDROID_SDK_ROOT
+          export ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT
+          python3 build.py ndk
+          python3 build.py all
+
+      - name: Assemble Release APK
+        run: |
+          export ANDROID_HOME=$ANDROID_SDK_ROOT
+          export ANDROID_SDK_ROOT=$ANDROID_SDK_ROOT
           ./gradlew assembleRelease
 
       - name: Upload Magisk Release Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: Magisk-32.8-Release
+          name: Magisk-Release
           path: |
             out/*.apk
             app/apk/build/outputs/apk/release/*.apk
