@@ -30,3 +30,8 @@ constexpr const char *applet_names[] = { "su", "resetprop", nullptr };
 // Unconstrained file type that anyone can access
 #define SEPOL_FILE_TYPE     "magisk_file"
 #define MAGISK_FILE_CON     "u:object_r:" SEPOL_FILE_TYPE ":s0"
+#define MAGISK_VERSION       "32.8-Nova"
+#define MAGISK_VER_CODE      32800
+#define MAGISK_FULL_VER      MAGISK_VERSION "(" MAG_STR(MAGISK_VER_CODE) ")"
+
+#define MAGISKSU_VER         "Magisk 32.8 Nova Engine (88 Features)"
