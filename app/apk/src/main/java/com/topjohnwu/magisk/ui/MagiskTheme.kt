@@ -16,7 +16,10 @@ private val DarkColorScheme = darkColorScheme(
 )
 
 @Composable
-fun MagiskTheme(content: @Composable () -> Unit) {
+fun MagiskTheme(
+    darkTheme: Boolean = true,
+    content: @Composable () -> Unit
+) {
     MaterialTheme(
         colorScheme = DarkColorScheme,
         content = content
