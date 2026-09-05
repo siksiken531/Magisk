@@ -14,7 +14,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.topjohnwu.magisk.core.Config
 import com.topjohnwu.magisk.ui.main.NovaBackground
 import com.topjohnwu.magisk.ui.main.NovaPrimary
 import com.topjohnwu.magisk.ui.main.NovaSurface
@@ -39,7 +38,7 @@ fun SettingsScreen() {
             fontWeight = FontWeight.Bold
         )
         Text(
-            text = "88 Özelliğin Kontrol Merkezi (Aktif Native Tetikleyici)",
+            text = "88 Özelliğin Kontrol Merkezi",
             color = Color.Gray,
             fontSize = 12.sp,
             modifier = Modifier.padding(bottom = 16.dp)
@@ -49,27 +48,22 @@ fun SettingsScreen() {
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             items(all88Features) { feature ->
-                SettingCheckboxCard(featureId = feature.first, title = feature.first, description = feature.second)
+                SettingCheckboxCard(title = feature.first, description = feature.second)
             }
         }
     }
 }
 
 @Composable
-fun SettingCheckboxCard(featureId: String, title: String, description: String) {
-    // Özelliğin durumunu doğrudan sistem konfigürasyonundan oku ve kaydet
-    var isChecked by remember { mutableStateOf(Config.get<Boolean>(featureId, true)) }
+fun SettingCheckboxCard(title: String, description: String) {
+    var isChecked by remember { mutableStateOf(true) }
 
     Card(
         colors = CardDefaults.cardColors(containerColor = NovaSurface),
         shape = RoundedCornerShape(10.dp),
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { 
-                isChecked = !isChecked 
-                // Sistem ve C++ daemon katmanına değişikliği bildir
-                Config.set(featureId, isChecked)
-            }
+            .clickable { isChecked = !isChecked }
     ) {
         Row(
             modifier = Modifier
