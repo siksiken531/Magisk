@@ -3,27 +3,22 @@ package com.topjohnwu.magisk.ui.theme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
+import com.topjohnwu.magisk.ui.main.NovaBackground
+import com.topjohnwu.magisk.ui.main.NovaPrimary
+import com.topjohnwu.magisk.ui.main.NovaSecondary
+import com.topjohnwu.magisk.ui.main.NovaSurface
 
-val NovaBackground = Color(0xFF05050A)
-val NovaSurface = Color(0xFF0E0E17)
-val NovaPrimary = Color(0xFF00FFC8)
-val NovaSecondary = Color(0xFF9D00FF)
-
-private val NovaColorScheme = darkColorScheme(
-    background = NovaBackground,
-    surface = NovaSurface,
+private val DarkColorScheme = darkColorScheme(
     primary = NovaPrimary,
-    secondary = NovaSecondary
+    secondary = NovaSecondary,
+    background = NovaBackground,
+    surface = NovaSurface
 )
 
 @Composable
-fun MagiskTheme(
-    darkTheme: Boolean = true,
-    content: @Composable () -> Unit
-) {
+fun MagiskTheme(content: @Composable () -> Unit) {
     MaterialTheme(
-        colorScheme = NovaColorScheme,
+        colorScheme = DarkColorScheme,
         content = content
     )
 }
