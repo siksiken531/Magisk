@@ -4,9 +4,9 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import com.topjohnwu.magisk.MainActivity
 import com.topjohnwu.magisk.core.Const
 import com.topjohnwu.magisk.core.cmp
-import com.topjohnwu.magisk.ui.MainActivity
 
 object FlashUtils {
 
